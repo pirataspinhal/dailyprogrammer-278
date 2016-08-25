@@ -1,13 +1,10 @@
-- module(weave).
+- module(solution).
 - export([weave/2, bracket/2]).
 
-% pa comefar, nu eh hafkell.
-%
 % load module into erl with c(weave) and call functions:
 %
-%       weave:weave
-%       weave:bracket
-%
+%       solution:weave
+%       solution:bracket
 
 % rotate a list (head to tail):
 %
@@ -21,7 +18,7 @@ rotate([H|T]) -> T ++ [H].
 %
 weave([], A) -> A;
 weave(_, []) -> [];
-weave(_, [A|[]]) -> [A];
+weave(_, L2 = [_|[]]) -> L2;
 weave([A1|B1], [A2|B2]) -> [A2] ++ [A1] ++ weave(rotate([A1] ++ B1), B2).
 
 % bracket entry function; append atoms
@@ -30,7 +27,7 @@ weave([A1|B1], [A2|B2]) -> [A2] ++ [A1] ++ weave(rotate([A1] ++ B1), B2).
 bracket(_, []) -> [];
 bracket([], _) -> [];
 bracket(_, L2 = [_|[]]) -> L2;
-bracket(L1, L2) -> [] ++ inBracket(L1 ++ [tail], L2 ++ [tail,tail]).
+bracket(L1, L2) -> inBracket(L1 ++ [tail], L2 ++ [tail,tail]).
 
 % bracket insert first into second,
 % until one of both lists exhausts:
