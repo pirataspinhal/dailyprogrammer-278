@@ -8,15 +8,11 @@ weave' a@(x:xs) b@(y:ys) = y:x: weave' xs ys
 
 bracket :: [a] -> [a] -> [[a]]
 bracket a b
-        | (length a) >= (length b) `quot` 2 = bracketR a (cycle b)
-        | (length a) < (length b) `quot` 2 = bracketL (cycle a) b
+        | (length a) >= (length b) `quot` 2 = bracket' a (cycle b)
+        | (length a) < (length b) `quot` 2 = bracket' (cycle a) b
 
-bracketR :: [a] -> [a] -> [[a]]
-bracketR [] _ = []
-bracketR (x:xs) (n:m:ys) =
-        [n:x:m:[]] ++ bracketR xs ys
-
-bracketL :: [a] -> [a] -> [[a]]
-bracketL _ [] = []
-bracketL (x:xs) (n:m:ys) =
-        [n:x:m:[]] ++ bracketL xs ys
+bracket' :: [a] -> [a] -> [[a]]
+bracket' [] _ = []
+bracket' _ [] = []
+bracket' (x:xs) (n:m:ys) =
+        [n:x:m:[]] ++ bracket' xs ys
