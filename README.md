@@ -1,5 +1,6 @@
 # dailyprogrammer-278
 
-Attempt to solve challenge #278 using a functional programming approach in Erlang and Haskell
+Attempt to solve challenge #278 using a functional programming pproach in
+Erlang and Haskell.
 
-https://goo.gl/oi1cMw
+Permalink: https://goo.gl/oi1cMw
